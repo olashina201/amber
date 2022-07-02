@@ -7,6 +7,13 @@ import {
   UpdateReport,
   deleteReport,
 } from "../handlers/report";
+import {
+  CreateEmergency,
+  GetAllEmergency,
+  GetEmergency,
+  UpdateEmergency,
+  deleteEmergency,
+} from "../handlers/emergency";
 import rateLimit from "express-rate-limit";
 
 const limiter = rateLimit({
@@ -28,5 +35,12 @@ router.get("/reports", GetAllReport);
 router.get("/report", GetReport);
 router.put("/report", UpdateReport);
 router.delete("/report", deleteReport);
+
+// emergency
+router.post("/case", CreateEmergency);
+router.get("/cases", GetAllEmergency);
+router.get("/case", GetEmergency);
+router.put("/case", UpdateEmergency);
+router.delete("/case", deleteEmergency);
 
 export default router;
