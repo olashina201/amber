@@ -1,10 +1,10 @@
 import { Response, Request } from "express";
-import Emergency from "../models/Emergency";
+import Report from "../models/Report";
 
-export const CreateEmergency = async (req: Request, res: Response) => {
+export const CreateReport = async (req: Request, res: Response) => {
   try {
-    const newEmergency = new Emergency(req.body);
-    const saved = await newEmergency.save();
+    const newReport = new Report(req.body);
+    const saved = await newReport.save();
     return res.status(201).json({ success: true, data: saved });
   } catch (err) {
     console.log(err);
@@ -12,9 +12,9 @@ export const CreateEmergency = async (req: Request, res: Response) => {
   }
 };
 
-export const GetAllEmergency = async (req: Request, res: Response) => {
+export const GetAllReport = async (req: Request, res: Response) => {
   try {
-    const data = Emergency.find({});
+    const data = Report.find({});
     return res.status(200).json({ success: true, data: data });
   } catch (err) {
     console.log(err);
@@ -22,10 +22,10 @@ export const GetAllEmergency = async (req: Request, res: Response) => {
   }
 };
 
-export const GetEmergency = async (req: Request, res: Response) => {
+export const GetReport = async (req: Request, res: Response) => {
   try {
     const { id } = req.query;
-    const data = await Emergency.findById(id);
+    const data = await Report.findById(id);
     if (!data) {
       return res.status(400).json({ success: false });
     } else {
@@ -37,7 +37,7 @@ export const GetEmergency = async (req: Request, res: Response) => {
   }
 };
 
-export const UpdateEmergency = async (req: Request, res: Response) => {
+export const UpdateReport = async (req: Request, res: Response) => {
   try {
     const { id } = req.query;
     const body = {
@@ -45,7 +45,7 @@ export const UpdateEmergency = async (req: Request, res: Response) => {
       description: req.body.description,
       duration: req.body.duration,
     };
-    const data = await Emergency.findByIdAndUpdate(id, body, {
+    const data = await Report.findByIdAndUpdate(id, body, {
       new: true,
       runValidators: true,
     });
@@ -60,10 +60,10 @@ export const UpdateEmergency = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteEmergency = async (req: Request, res: Response) => {
+export const deleteReport = async (req: Request, res: Response) => {
   try {
     const { id } = req.query;
-    const data = await Emergency.deleteOne({ _id: id });
+    const data = await Report.deleteOne({ _id: id });
     if (!data) {
       return res.status(400).json({ success: false });
     } else {
