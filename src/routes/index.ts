@@ -1,5 +1,12 @@
 import { Router } from "express";
 import { Register, Login } from "../handlers";
+import {
+  CreateReport,
+  GetAllReport,
+  GetReport,
+  UpdateReport,
+  deleteReport,
+} from "../handlers/report";
 import rateLimit from "express-rate-limit";
 
 const limiter = rateLimit({
@@ -14,5 +21,12 @@ const router = Router();
 
 router.post("/register", Register);
 router.post("/login", limiter, Login);
+
+// report
+router.post("/report", CreateReport);
+router.get("/reports", GetAllReport);
+router.get("/report", GetReport);
+router.put("/report", UpdateReport);
+router.delete("/report", deleteReport);
 
 export default router;
