@@ -13,7 +13,7 @@ import {
   GetEmergency,
   UpdateEmergency,
   deleteEmergency,
-} from "../handlers/Emergency";
+} from "../handlers/emergency";
 import rateLimit from "express-rate-limit";
 
 const limiter = rateLimit({

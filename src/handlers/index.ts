@@ -4,7 +4,7 @@ import User from "../models/User";
 
 export const Register = async (req: Request, res: Response) => {
   try {
-    const { firstname, lastname, middlename, email, password } = req.body;
+    const { fullname, email, password } = req.body;
     const user = await User.findOne({ email: email });
     let atpos = email.indexOf("@");
     let domain = email.split("@")[1];
@@ -19,9 +19,7 @@ export const Register = async (req: Request, res: Response) => {
     }
     const passwordHash = await bcryptjs.hash(password, 10);
     const newUser = new User({
-      firstname,
-      lastname,
-      middlename,
+      fullname,
       email,
       password: passwordHash,
     });

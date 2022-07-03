@@ -1,17 +1,7 @@
 import mongoose, { Schema } from "mongoose"
 
 const User = new Schema({
-    firstname: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    lastname: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    middlename: {
+    fullname: {
         type: String,
         trim: true,
         required: true
