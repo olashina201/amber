@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const handlers_1 = require("../handlers");
 const report_1 = require("../handlers/report");
-const emergency_1 = require("../handlers/emergency");
+const Emergency_1 = require("../handlers/Emergency");
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const limiter = (0, express_rate_limit_1.default)({
     windowMs: 5 * 60 * 1000,
@@ -25,9 +25,9 @@ router.get("/report", report_1.GetReport);
 router.put("/report", report_1.UpdateReport);
 router.delete("/report", report_1.deleteReport);
 // emergency
-router.post("/case", emergency_1.CreateEmergency);
-router.get("/cases", emergency_1.GetAllEmergency);
-router.get("/case", emergency_1.GetEmergency);
-router.put("/case", emergency_1.UpdateEmergency);
-router.delete("/case", emergency_1.deleteEmergency);
+router.post("/case", Emergency_1.CreateEmergency);
+router.get("/cases", Emergency_1.GetAllEmergency);
+router.get("/case", Emergency_1.GetEmergency);
+router.put("/case", Emergency_1.UpdateEmergency);
+router.delete("/case", Emergency_1.deleteEmergency);
 exports.default = router;
