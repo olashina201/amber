@@ -1,18 +1,22 @@
 import express, { Response, Request } from "express";
-import {connect} from "./DB/connect";
+import { connect } from "./DB/connect";
 import cors from "cors";
 import dotenv from "dotenv";
 import router from "./routes";
 
 const app = express();
-dotenv.config()
+dotenv.config();
 
 connect();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use((req: Request, res: Response, next: any) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "*");
@@ -23,7 +27,6 @@ app.use((req: Request, res: Response, next: any) => {
   );
   next();
 });
-
 
 app.get("/", async (_req: Request, res: Response) => {
   res.send({ status: 200, message: "server up and running" });
