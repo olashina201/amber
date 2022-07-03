@@ -24,8 +24,18 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const User = new mongoose_1.Schema({
-    fullname: {
+const Emergency = new mongoose_1.Schema({
+    firstname: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    lastname: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    middlename: {
         type: String,
         trim: true,
         required: true
@@ -46,4 +56,4 @@ const User = new mongoose_1.Schema({
         default: Date.now
     },
 });
-exports.default = mongoose_1.default.models.firewall || mongoose_1.default.model("firewall", User);
+exports.default = mongoose_1.default.models.emergency || mongoose_1.default.model("emergency", Emergency);
