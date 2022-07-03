@@ -9,7 +9,13 @@ import {
 } from "../handlers/report";
 
 import rateLimit from "express-rate-limit";
-import { CreateEmergency, GetAllEmergency, GetEmergency, UpdateEmergency, deleteEmergency } from "../handlers/emergency";
+import {../handlers/Emergency
+  CreateEmergency,
+  GetAllEmergency,
+  GetEmergency,
+  UpdateEmergency,
+  deleteEmergency,
+} from "../handlers/Emergency";
 
 const limiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 5 minutes
